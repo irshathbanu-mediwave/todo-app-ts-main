@@ -26,7 +26,6 @@ function App() {
   function onhandleedit(id: Number) {
     const find = todos.findIndex((t) => t.id === id);
     console.log(find);
-   
 
   }
 
