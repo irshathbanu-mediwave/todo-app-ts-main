@@ -2,19 +2,23 @@ import { useState } from "react";
 import { ITodo } from "../types";
 
 interface IEdit {
-  item: ITodo[];
+  todos: ITodo;
   handlesavebtn: (num: Number, texts: string) => void;
 }
-const Edit: React.FC<IEdit> = ({ handlesavebtn }) => {
-  const [values, SeTvalue] = useState("");
-  function onhandlesavebtn(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    handlesavebtn(values);
-    SeTvalue("");
+const Edit: React.FC<IEdit> = ({ handlesavebtn,todos}) => {
+  const [values, SeTvalue] = useState(todos.text);
+  function onhandlesavebtn(e: React.FormEvent<HTMLFormElement>,values:string,id:Number)
+  { e.preventDefault()
+    
+    handlesavebtn(values,id);
+    
   }
+    
+  
   return (
     <div className="editform">
-      <form onSubmit={onhandlesavebtn}>
+      <form onSubmit={(e)=>onhandlesavebtn(e,values,todos.id)
+      }>
         <input
           type="text"
           value={values}
