@@ -33,7 +33,6 @@ const TodoList: React.FC<ITodoList> = ({
 
   return (
     <div className="add-task">
-      <h2> Task-list</h2>
       {todos.map((t) => (
         <div className={extraCss} key={t.id.toString()}>
           {t.isEdit ? (
@@ -48,8 +47,12 @@ const TodoList: React.FC<ITodoList> = ({
                 onChange={() => handlecheckbox(t.id)}
               />
               {t.text}
-              <button onClick={() => handledelete(t.id)}>Delete</button>
-              <button onClick={() => handleedit(t.id)}>Edit</button>
+              <button className="delete-btn" onClick={() => handledelete(t.id)}>
+                Delete
+              </button>
+              <button className="edit-btn" onClick={() => handleedit(t.id)}>
+                Edit
+              </button>
             </p>
           )}
         </div>

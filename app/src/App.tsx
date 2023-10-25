@@ -61,16 +61,20 @@ function App() {
   return (
     <div className="container">
       <h1>My todos </h1>
-      <AddTodo onTodoAdd={onTodoAdd} />
+      <div className="addtodo">
+        <AddTodo onTodoAdd={onTodoAdd} />
+      </div>
 
-      <TodoList
-        todos={todos}
-        extraCss="Todo-item"
-        handledelete={onhandledelete}
-        handleedit={onhandleedit}
-        handlesavebtn={onhandlesave}
-        setTodos={setTodos}
-      />
+      <div className="todolist">
+        <TodoList
+          todos={todos}
+          extraCss="Todo-item"
+          handledelete={onhandledelete}
+          handleedit={onhandleedit}
+          handlesavebtn={onhandlesave}
+          setTodos={setTodos}
+        />
+      </div>
     </div>
   );
 }
