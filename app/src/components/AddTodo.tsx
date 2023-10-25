@@ -19,6 +19,7 @@ const AddTodo: React.FC<IAddTodo> = ({ onTodoAdd }) => {
     <form className="form-container" onSubmit={handleSubmit}>
       <label> Enter your task</label>
       <input
+      className="input-box"
         type="text"
         value={text}
         required

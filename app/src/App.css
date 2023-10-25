@@ -6,29 +6,37 @@ body {
   margin: auto;
 
 }
-
-
 .container {
   margin: auto;
   text-align: center;
 
 }
-
 .strike {
   text-decoration: line-through;
 }
-
-
-
 .form-container {
   font-size: 20px;
-  padding: 30px;
-  margin: auto;
-  text-align: center;
-  width: 500px;
-  height: 100px;
-  background-color: white;
-  border-radius: 20px;
+    padding: 20px;
+    margin: auto;
+    text-align: center;
+    width: 500px;
+    height: 60px;
+    background-color: white;
+    border-radius: 20px;
+}
+
+
+.add-btn {
+  width: 100px;
+  height: 40px;
+  border-radius: 10px;
+}
+
+.input-box {
+  border-radius: 10px;
+  padding: 5px;
+  width: 250px;
+  height: 30px;
 }
 
 .add-task {

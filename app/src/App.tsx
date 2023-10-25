@@ -4,7 +4,8 @@ import TodoList from "./components/TodoList";
 import AddTodo from "./components/AddTodo";
 
 function App() {
-  const [todos, setTodos] = useState<ITodo[]>([]);
+  const initallist = getstorage();
+  const [todos, setTodos] = useState<ITodo[]>(initallist);
 
   function onTodoAdd(str: string) {
     const obj: ITodo = {
@@ -15,6 +16,9 @@ function App() {
     };
     setTodos((prev) => [...prev, obj]);
   }
+  useEffect(() => {
+    savestoreage(todos);
+  }, [todos]);
   function onhandledelete(id: Number) {
     const array = todos.filter((t) => t.id !== id);
     console.log(array);
@@ -43,6 +47,7 @@ function App() {
     setTodos(changetodo);
     console.log(changetodo);
   }
+
   function getstorage() {
     const gettodo = localStorage.getItem("Task-list");
     if (gettodo) {
@@ -50,13 +55,14 @@ function App() {
     }
     return [];
   }
-  function savestoreage(){
-    localStorage.setItem("Task-list",JSON.stringify())
+  function savestoreage(todos: ITodo[]) {
+    localStorage.setItem("Task-list", JSON.stringify(todos));
   }
   return (
     <div className="container">
       <h1>My todos </h1>
       <AddTodo onTodoAdd={onTodoAdd} />
+
       <TodoList
         todos={todos}
         extraCss="Todo-item"
