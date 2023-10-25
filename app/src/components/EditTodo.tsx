@@ -20,17 +20,16 @@ const Edit: React.FC<IEdit> = ({ handlesavebtn, todos }) => {
   return (
     <div className="editform">
       <form onSubmit={(e) => onhandlesavebtn(e, values, todos.id)}>
-        <div className="update-text">
           <input
             type="text"
             value={values}
             onChange={(e) => SeTvalue(e.target.value)}
           />
-        </div>
+        
 
-        <div className="update-btn">
+        
           <button type="submit">Update</button>
-        </div>
+        
       </form>
     </div>
   );
