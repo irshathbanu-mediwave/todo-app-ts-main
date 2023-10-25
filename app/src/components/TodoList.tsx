@@ -18,18 +18,18 @@ const TodoList: React.FC<ITodoList> = ({
   handlesavebtn,
   setTodos,
 }) => {
-  const handlecheckbox = (id: Number) => {
-    const updateItem = todos.map((t) => {
-      if (t.id === id) {
-        return {
-          ...t,
-          isDone: !t.isDone,
-        };
-      }
-      return t;
-    });
-    setTodos(updateItem);
-  };
+  // const handlecheckbox = (id: Number) => {
+  //   const updateItem = todos.map((t) => {
+  //     if (t.id === id) {
+  //       return {
+  //         ...t,
+  //         isDone: !t.isDone,
+  //       };
+  //     }
+  //     return t;
+  //   });
+  //   setTodos(updateItem);
+  // };
 
   return (
     <div className="add-task">
@@ -43,10 +43,11 @@ const TodoList: React.FC<ITodoList> = ({
             <p className={t.isDone ? "strike" : ""}>
               <input
                 type="checkbox"
-                checked={t.isDone}
-                onChange={() => handlecheckbox(t.id)}
+                // checked
+                // onChange={() => handlecheckbox(t.id)}
               />
-              {t.text}
+              <label className="strikethrough"> {t.text}</label>
+
               <button className="delete-btn" onClick={() => handledelete(t.id)}>
                 Delete
               </button>
@@ -67,7 +68,7 @@ export default TodoList;
 {todos.map((t) => (
   <li key={t.id.toString()}>{t.text}</li>
 ))}
-</ul> */
+</ul> ={t.isDone}*/
 }
 {
   /* <p>
