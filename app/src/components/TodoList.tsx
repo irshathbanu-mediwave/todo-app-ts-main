@@ -7,6 +7,7 @@ interface ITodoList {
   handledelete: (id: Number) => void;
   handleedit: (id: Number) => void;
   handlesavebtn: (num: Number, values: string) => void;
+  setTodos: (updateItem: ITodo[]) => void;
 }
 
 const TodoList: React.FC<ITodoList> = ({
@@ -15,25 +16,42 @@ const TodoList: React.FC<ITodoList> = ({
   handledelete,
   handleedit,
   handlesavebtn,
+  setTodos,
 }) => {
+  const handlecheckbox = (id: Number) => {
+    const updateItem = todos.map((t) => {
+      if (t.id === id) {
+        return {
+          ...t,
+          isDone: !t.isDone,
+        };
+      }
+      return t;
+    });
+    setTodos(updateItem);
+  };
+
   return (
     <div className="add-task">
       <h1> Task-list</h1>
       {todos.map((t) => (
         <div className={extraCss} key={t.id.toString()}>
-           {t.isEdit ? (
+          {t.isEdit ? (
             <>
-              <Edit todos={t}handlesavebtn ={ handlesavebtn} />
+              <Edit todos={t} handlesavebtn={handlesavebtn} />
             </>
           ) : (
-            <p>
-              <input type="checkbox" />
+            <p className={t.isDone? 'strike':''}>
+              <input
+                type="checkbox"
+                checked={t.isDone}
+                onChange={() => handlecheckbox(t.id)}
+              />
               {t.text}
-              <button onClick={() =>handledelete (t.id)}>delete</button>
+              <button onClick={() => handledelete(t.id)}>delete</button>
               <button onClick={() => handleedit(t.id)}>Edit</button>
             </p>
           )}
-         
         </div>
       ))}
     </div>
@@ -48,7 +66,8 @@ export default TodoList;
 ))}
 </ul> */
 }
-{/* <p>
+{
+  /* <p>
 <input type="checkbox" />
 {t.text}
 <button
@@ -59,4 +78,5 @@ export default TodoList;
   Delete
 </button>
 <button onClick={() => handleedit(t.id)}> edit</button>
-</p> */}
+</p> */
+}

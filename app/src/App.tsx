@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ITodo } from "./types";
 import TodoList from "./components/TodoList";
 import AddTodo from "./components/AddTodo";
@@ -43,9 +43,19 @@ function App() {
     setTodos(changetodo);
     console.log(changetodo);
   }
-
+  function getstorage() {
+    const gettodo = localStorage.getItem("Task-list");
+    if (gettodo) {
+      return JSON.parse(gettodo);
+    }
+    return [];
+  }
+  function savestoreage(){
+    localStorage.setItem("Task-list",JSON.stringify())
+  }
   return (
     <div className="container">
+      <h1>My todos </h1>
       <AddTodo onTodoAdd={onTodoAdd} />
       <TodoList
         todos={todos}
@@ -53,6 +63,7 @@ function App() {
         handledelete={onhandledelete}
         handleedit={onhandleedit}
         handlesavebtn={onhandlesave}
+        setTodos={setTodos}
       />
     </div>
   );

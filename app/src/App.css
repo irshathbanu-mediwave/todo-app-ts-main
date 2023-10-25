@@ -1,9 +1,35 @@
-.container {
+body {
+  background-image: url("https://salamdonya.com/assets/images/94/94581lfv3.png");
+
+  background-repeat: no-repeat;
+  background-size: cover;
   margin: auto;
-  text-align: center;
+
 }
 
 
+.container {
+  margin: auto;
+  text-align: center;
+
+}
+
+.strike {
+  text-decoration: line-through;
+}
+
+
+
+.form-container {
+  font-size: 20px;
+  padding: 30px;
+  margin: auto;
+  text-align: center;
+  width: 500px;
+  height: 100px;
+  background-color: white;
+  border-radius: 20px;
+}
 
 .add-task {
   display: grid;
