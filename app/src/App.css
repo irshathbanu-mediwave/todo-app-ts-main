@@ -1,3 +1,10 @@
+.container {
+  margin: auto;
+  text-align: center;
+}
+
+
+
 .add-task {
   display: grid;
 }
